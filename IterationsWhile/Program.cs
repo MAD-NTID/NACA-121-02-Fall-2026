@@ -10,8 +10,8 @@ while(student && !study)
 
     string response = Console.ReadLine();
 
-    if(response == "y" || response == "Y")    
-        study = true;
+    if(response == "y" || response == "Y")
+        study = true;    
 }
 
 Console.WriteLine("You are now studying");
