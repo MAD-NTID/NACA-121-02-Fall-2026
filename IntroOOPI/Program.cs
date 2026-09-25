@@ -42,3 +42,8 @@ Car profMBCar = new Car("Toyota", "Tacoma", 2006, "NY-4321");
 
 Console.WriteLine($"Your brand new car is a {profMBCar.year} {profMBCar.make} {profMBCar.model} with license plate {profMBCar.license}");
 
+// constant variable of type string named MICHAEL
+ string MICHAEL = "Michael";
+
+// Means you can't change its value once declared and initialized
+MICHAEL = "Tony";
