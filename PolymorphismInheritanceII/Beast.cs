@@ -16,18 +16,24 @@ public class Beast : IBeast
         Damage = damage;
     }
 
-    public int Attack()
+    public virtual int Attack()
     {
         // Return the damage that this beast can cause - add a 15% chance of attacking 'critically'
         Random random = new Random();
 
         if(random.Next(0, 101) > 85)
         {
-            double extraDamage = 1 + (random.Next(1, 6) / 100);
-            return (int) (Damage * extraDamage);
+            double extraDamage = 1 + (random.Next(1, 6) / 100.0);
+            extraDamage *= Damage;
+
+            Console.WriteLine($"{Name} critical attacks - Damage: {(int) extraDamage}");
+
+            return (int) extraDamage;
         }
 
         // Otherwise, return regular damage power
+        Console.WriteLine($"{Name} normal attacks - Damage: {Damage}");
+
         return Damage;
     }
 
@@ -65,5 +71,16 @@ public class Beast : IBeast
                 $"Health: {CurrentHealth}/{Health}\n" + 
                 $"Damage: {Damage}";
                 
+    }
+
+    public override bool Equals(object? obj)
+    {
+        // Checks if object being passed is a child of Beast (this Beast class)
+        return obj is Beast;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }
