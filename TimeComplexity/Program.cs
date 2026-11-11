@@ -6,17 +6,17 @@
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters;
 
-int student_size = 25000;
+int studentSize = 25000;
 
 // Create an array of string
-string[] students = new string[student_size];
+string[] students = new string[studentSize];
 
 // Fill the students array
-for(int i = 0; i < student_size - 1; i++)
+for(int i = 0; i < studentSize - 1; i++)
     students[i] = $"Student - {i + 1}";
 
 // Let's put 'Peter' as the last student in the array
-students[student_size - 1] = "Peter";
+students[studentSize - 1] = "Peter";
 
 /*
     O(1) - Constant Time
@@ -28,16 +28,16 @@ students[student_size - 1] = "Peter";
 
     Accessing a known array index takes constant time.
 */
-Console.WriteLine($"O(1) - We know 'Peter' is in index {student_size - 1}");
+Console.WriteLine($"O(1) - We know 'Peter' is in index {studentSize - 1}");
 Stopwatch peterStopWatchO1 = new Stopwatch();
 
 peterStopWatchO1.Start();
 
-string peter = students[student_size - 1];
+string peter = students[studentSize - 1];
 
 peterStopWatchO1.Stop();
 
-Console.WriteLine($"Found - '{peter}' at index position {student_size - 1}");
+Console.WriteLine($"Found - '{peter}' at index position {studentSize - 1}");
 PrintElapses(peterStopWatchO1);
 
 /*
@@ -57,7 +57,7 @@ Stopwatch findPeter = new Stopwatch();
 findPeter.Start();
 
 int peterIndex = -1;
-for(int i = 0; i < student_size; i++)
+for(int i = 0; i < studentSize; i++)
 {
     if(students[i] == "Peter")
     {
@@ -69,7 +69,7 @@ for(int i = 0; i < student_size; i++)
 
 findPeter.Stop();
 
-if(peterIndex >= 0 && peterIndex <= student_size)
+if(peterIndex >= 0 && peterIndex <= studentSize)
     Console.WriteLine($"Found - '{peter}' at index position {peterIndex}");
 
 PrintElapses(findPeter);
@@ -84,8 +84,8 @@ PrintElapses(findPeter);
     Best Case Scenario: Peter is in the first class in and the first seat
     Worst Case Scenario: Peter is in the last class in and the last seat
 */
-int classroom_size = 50;
-string[,] classroom = new string[classroom_size, student_size];
+int classroomSize = 50;
+string[,] classroom = new string[classroomSize, studentSize];
 
 // Create N number of classrooms, with each having N number of students
 for(int c = 0; c < classroom.GetLength(0); c++)
@@ -94,8 +94,8 @@ for(int c = 0; c < classroom.GetLength(0); c++)
 
 // Let's put Peter in a random classroom and random seat
 Random random = new Random();
-int randomClassroom = random.Next(0, classroom_size);
-int randomSeat = random.Next(0, student_size);
+int randomClassroom = random.Next(0, classroomSize);
+int randomSeat = random.Next(0, studentSize);
 
 classroom[randomClassroom, randomSeat] = "Peter";
 
@@ -126,6 +126,6 @@ PrintElapses(peterSquare);
 void PrintElapses(Stopwatch stopwatch)
 {
     Console.WriteLine(  $"{stopwatch.ElapsedMilliseconds}ms\n" + 
-                    $"{stopwatch.ElapsedTicks} ticks\n" + 
-                    $"{stopwatch.Elapsed}\n"); 
+                        $"{stopwatch.ElapsedTicks} ticks\n" + 
+                        $"{stopwatch.Elapsed}\n"); 
 }
